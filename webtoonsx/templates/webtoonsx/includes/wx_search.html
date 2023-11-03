@@ -1,0 +1,43 @@
+<div id="search" class="modal fade" tabindex="-1" aria-labelledby="searchSeries" aria-hidden="true">
+    <div class="modal__dialog modal-fullscreen-md-down">
+        <div class="modal__content">
+            <div class="modal__header border-0">
+                <form method="POST" action="#" class="search form border border-2 rounded py-2 px-3">
+                    {% csrf_token %}
+
+                    <label for="wx_search" class="col-form__label"><i class="bi bi-search fs-24"></i></label>
+                    <input type="search" name="wx_search" id="wx_search" class="search__input form__input form__input--lg shadow-none" spellcheck="false" placeholder="Search series">
+                    <button type="button" class="search__btn-clear btn-close shadow-none fs-12" aria-label="Clear"></button>
+                </form>
+                <button type="button" class="fs-16 ms-2 d-md-none" data-jsx-dismiss="modal" aria-label="Close">Cancel</button>
+            </div>
+            <div class="modal__body">
+                <div class="searches mb-3">
+                    <p class="searches__text">No recent searches</p>
+                </div>
+                <div class="spinner mb-3">
+                    <div class="spinner__border spinner__border--search visually-hidden" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal__footer d-none d-md-block">
+                <ul class="search-command">
+                    <li>
+                        <i class="bi bi-arrow-return-left search-command__key"></i>
+                        <span>to select</span>
+                    </li>
+                    <li>
+                        <i class="bi bi-arrow-down search-command__key"></i>
+                        <i class="bi bi-arrow-up search-command__key"></i>
+                        <span>to navigate</span>
+                    </li>
+                    <li>
+                        <span class="search-command__key">esc</span>
+                        <span>to close</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
