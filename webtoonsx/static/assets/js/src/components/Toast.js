@@ -8,6 +8,7 @@ import {
 
 const NAME = 'toast';
 
+const EVENT_CLICK = 'click';
 const EVENT_MOUSEOVER = 'mouseover';
 const EVENT_MOUSEOUT = 'mouseout';
 const EVENT_FOCUSIN = 'focusin';
@@ -19,6 +20,8 @@ const EVENT_SHOWN = 'shown';
 const CLASS_NAME_FADE = 'fade';
 const CLASS_NAME_SHOW = 'show';
 const CLASS_NAME_SHOWING = 'showing';
+
+const SELECTOR_DATA_TRIGGER = '[data-jsx-trigger="toast"]';
 
 const Default = {
     animation: true,
@@ -156,9 +159,9 @@ export default class Toast extends BaseComponent {
 };
 
 // trigger
-SelectorEngine.find('[data-jsx-trigger="toast"]').forEach((selector) => {
-    selector.addEventListener('click', (event) => {
-        const THIS = event.target.closest('[data-jsx-trigger="toast"]');
+SelectorEngine.find(SELECTOR_DATA_TRIGGER).forEach((selector) => {
+    selector.addEventListener(EVENT_CLICK, (event) => {
+        const THIS = event.target.closest(SELECTOR_DATA_TRIGGER);
         const target = SelectorEngine.getElementFromSelector(THIS);
 
         event.preventDefault();
