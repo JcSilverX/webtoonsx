@@ -9,7 +9,7 @@ const EVENT_MOUSEDOWN = 'mousedown';
 const EVENT_KEYDOWN = 'keydown';
 const EVENT_CLICK = 'click';
 
-const SEARCH_BTN_SELECTOR = '.search__btn';
+const SEARCH_BTN_SELECTOR = '.wx-search-btn';
 
 export default class Search extends Modal {
     constructor(element, config) {
