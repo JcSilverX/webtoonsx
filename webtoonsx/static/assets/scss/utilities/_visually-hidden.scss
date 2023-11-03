@@ -1,0 +1,6 @@
+@use '../abstracts/' as *;
+
+.visually-hidden,
+.visually-hidden-focusable:not(:focus):not(:focus-within) {
+    @include visually-hidden();
+}

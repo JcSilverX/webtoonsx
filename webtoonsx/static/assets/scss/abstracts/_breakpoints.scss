@@ -1,0 +1,17 @@
+$grid-breakpoints: (
+    xs: 0,
+    sm: 36em, // 36em = 576px
+    md: 48em, // 48em = 768px
+    lg: 62em, // 62em = 992px
+    xl: 75em, // 75em = 1200px
+    xxl: 87.5em // 87.5em = 1400px
+) !default;
+
+$grid-breakpoints-down: (
+    xs: 0,
+    sm: 35.99875em, // 35.99875em = 575.98px
+    md: 47.99875em, // 47.99875em = 767.98px
+    lg: 61.99875em, // 61.99875em = 991.98px
+    xl: 74.99875em, // 74.99875em = 1199.98px
+    xxl: 87.49875em // 87.49875em = 1399.98px
+) !default;

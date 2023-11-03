@@ -1,0 +1,17 @@
+@use '../abstracts/' as *;
+
+.ranking-list {
+    --#{$prefix}ranking-list-bg: var(--#{$prefix}body-color-rgb);
+
+    background: rgba(var(--#{$prefix}ranking-list-bg), .125);
+
+    display: grid;
+    grid-template-columns: auto minmax(20rem, 90rem) auto;
+    grid-auto-rows: auto;
+
+    padding: 3rem 0 4rem;
+
+    & > * {
+        grid-column: 2 / 3;
+    }
+}

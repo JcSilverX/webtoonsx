@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en" data-jsx-theme="light">
+    {% load static %}
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+        >
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>
+            {% block title %} {% endblock %}
+        </title>
+        <!-- ICO -->
+        <link rel="shorcut icon" href="{% static 'assets/images/ico/favicon.ico' %}" type="image/x-icon">
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+
+        <!-- JS -->
+        <script defer src="{% static 'assets/js/app.js' %}" type="module"></script>
+
+        <script type="text/javascript">
+            if (localStorage.getItem('theme')) {
+                const theme = localStorage.getItem('theme');
+
+                if (theme === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                    document.documentElement.setAttribute('data-jsx-theme', 'dark');
+                } else {
+                    document.documentElement.setAttribute('data-jsx-theme', theme);
+                }
+            }
+        </script>
+
+    </head>
+    <body class="webtoonsx">
+        <div class="webtoonsx__app">
+            {% include 'webtoonsx/navigation/navigation.html' %}
+            <main class="main-content">
+                {% block content %} {% endblock %}
+            </main>
+            {% include 'webtoonsx/includes/footer.html' %}
+        </div>
+    </body>
+</html>

@@ -1,0 +1,22 @@
+@use '../abstracts/' as *;
+
+.home {
+    display: grid;
+    grid-template-rows: 36.5rem repeat(auto-fit, minmax(20rem, max-content));
+    grid-template-areas:
+        "hero"
+        "daily-tabs"
+        "ranking-list";
+}
+
+.hero {
+    grid-area: hero;
+}
+
+.daily-tabs {
+    grid-area: daily-tabs;
+}
+
+.ranking-list {
+    grid-area: ranking-list;
+}

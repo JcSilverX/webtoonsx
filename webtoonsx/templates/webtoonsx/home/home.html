@@ -1,0 +1,17 @@
+{% extends 'webtoonsx/layouts/base.html' %}
+
+{% block title %}
+    WebtoonsX
+{% endblock %}
+
+{% block content %}
+
+    <section class="home">
+
+        {% include 'webtoonsx/home/includes/hero.html' %}
+        {% include 'webtoonsx/home/includes/daily_tabs.html' %}
+        {% include 'webtoonsx/home/includes/ranking_list.html' %}
+
+    </section>
+
+{% endblock %}

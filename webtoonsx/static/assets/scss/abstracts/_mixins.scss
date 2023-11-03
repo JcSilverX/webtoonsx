@@ -1,0 +1,531 @@
+@use './variables' as *;
+@use './breakpoints' as *;
+@use './functions' as *;
+
+@use "sass:meta";
+@use "sass:math";
+@use "sass:map";
+@use 'sass:list';
+
+@mixin media-breakpoint-up($name, $breakpoints: $grid-breakpoints) {
+    $min: breakpoint-min($name, $breakpoints);
+    @if $min {
+        @media (min-width: $min) {
+            @content;
+        }
+    } @else {
+        @content;
+    }
+}
+
+@mixin media-breakpoint-down($name, $breakpoints: $grid-breakpoints) {
+    $max: breakpoint-max($name, $breakpoints);
+    @if $max {
+        @media (max-width: $max) {
+            @content;
+        }
+    } @else {
+        @content;
+    }
+}
+
+@mixin media-breakpoint-between($lower, $upper, $breakpoints: $grid-breakpoints) {
+    $min: breakpoint-min($lower, $breakpoints);
+    $max: breakpoint-max($upper, $breakpoints);
+
+    @if $min != null and $max != null {
+        @media (min-width: $min) and (max-width: $max) {
+            @content;
+        }
+    } @else if $max == null {
+        @include media-breakpoint-up($lower, $breakpoints) {
+            @content;
+        }
+    } @else if $min == null {
+        @include media-breakpoint-down($upper, $breakpoints) {
+            @content;
+        }
+    }
+}
+
+@mixin media-breakpoint-only($name, $breakpoints: $grid-breakpoints) {
+    $min:  breakpoint-min($name, $breakpoints);
+    $next: breakpoint-next($name, $breakpoints);
+    $max:  breakpoint-max($next, $breakpoints);
+
+    @if $min != null and $max != null {
+        @media (min-width: $min) and (max-width: $max) {
+            @content;
+        }
+    } @else if $max == null {
+        @include media-breakpoint-up($name, $breakpoints) {
+            @content;
+        }
+    } @else if $min == null {
+        @include media-breakpoint-down($next, $breakpoints) {
+            @content;
+        }
+    }
+}
+
+
+@mixin make-container($gutter: $container-padding-x) {
+    --#{$prefix}gutter-x: #{$gutter};
+    --#{$prefix}gutter-y: 0;
+
+    width: 100%;
+    padding-right: calc(var(--#{$prefix}gutter-x) * .5);
+    padding-left: calc(var(--#{$prefix}gutter-x) * .5);
+    margin-right: auto;
+    margin-left: auto;
+}
+
+
+@mixin make-row($gutter: $grid-gutter-width) {
+    --#{$prefix}gutter-x: #{$gutter};
+    --#{$prefix}gutter-y: 0;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: calc(-1 * var(--#{$prefix}gutter-y));
+    margin-right: calc(-.5 * var(--#{$prefix}gutter-x));
+    margin-left: calc(-.5 * var(--#{$prefix}gutter-x));
+}
+
+@mixin make-col-ready() {
+    box-sizing: if(variable-exists(include-column-box-sizing) and $include-column-box-sizing, border-box, null);
+    flex-shrink: 0;
+    width: 100%;
+    max-width: 100%;
+    padding-right: calc(var(--#{$prefix}gutter-x) * .5);
+    padding-left: calc(var(--#{$prefix}gutter-x) * .5);
+    margin-top: var(--#{$prefix}gutter-y);
+}
+
+@mixin make-col($size: false, $columns: $grid-columns) {
+    @if $size {
+        flex: 0 0 auto;
+        width: percentage(math.div($size, $columns));
+
+    } @else {
+        flex: 1 1 0;
+        max-width: 100%;
+    }
+}
+
+@mixin make-col-auto() {
+    flex: 0 0 auto;
+    width: auto;
+}
+
+@mixin make-col-offset($size, $columns: $grid-columns) {
+    $num: percentage(math.div($size, $columns));
+    margin-left: $num;
+    // margin-left: if($num == 0, 0, percentage($num));
+}
+
+@mixin row-cols($count) {
+    > * {
+        flex: 0 0 auto;
+        width: divide(100%, $count);
+    }
+}
+
+@mixin make-grid-columns($columns: $grid-columns, $gutter: $grid-gutter-width, $breakpoints: $grid-breakpoints) {
+    @each $breakpoint in map-keys($breakpoints) {
+        $infix: breakpoint-infix($breakpoint, $breakpoints);
+
+        @include media-breakpoint-up($breakpoint, $breakpoints) {
+
+            .col#{$infix} {
+                flex: 1 0 0%;
+            }
+
+            .row-cols#{$infix}-auto > * {
+                @include make-col-auto();
+            }
+
+            @if $grid-row-columns > 0 {
+                @for $i from 1 through $grid-row-columns {
+                    .row-cols#{$infix}-#{$i} {
+                        @include row-cols($i);
+                    }
+                }
+            }
+
+            .col#{$infix}-auto {
+                @include make-col-auto();
+            }
+
+            @if $columns > 0 {
+                @for $i from 1 through $columns {
+                    .col#{$infix}-#{$i} {
+                        @include make-col($i, $columns);
+                    }
+                }
+
+                @for $i from 0 through ($columns - 1) {
+                    @if not ($infix == "" and $i == 0) {
+                        .offset#{$infix}-#{$i} {
+                            @include make-col-offset($i, $columns);
+                        }
+                    }
+                }
+            }
+
+            @each $key, $value in $gutters {
+                .g#{$infix}-#{$key},
+                .gx#{$infix}-#{$key} {
+                    --#{$prefix}gutter-x: #{$value};
+                }
+
+                .g#{$infix}-#{$key},
+                .gy#{$infix}-#{$key} {
+                    --#{$prefix}gutter-y: #{$value};
+                }
+            }
+        }
+    }
+}
+
+@mixin make-cssgrid($columns: $grid-columns, $breakpoints: $grid-breakpoints) {
+    @each $breakpoint in map-keys($breakpoints) {
+        $infix: breakpoint-infix($breakpoint, $breakpoints);
+
+        @include media-breakpoint-up($breakpoint, $breakpoints) {
+            @if $columns > 0 {
+                @for $i from 1 through $columns {
+                    .g-col#{$infix}-#{$i} {
+                        grid-column: auto / span $i;
+                    }
+                }
+
+                @for $i from 1 through ($columns - 1) {
+                    .g-start#{$infix}-#{$i} {
+                        grid-column-start: $i;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+@mixin color-mode($mode: light, $root: false) {
+    @if $color-mode-type == "media-query" {
+        @if $root == true {
+            @media (prefers-color-scheme: $mode) {
+                :root {
+                    @content;
+                }
+            }
+        } @else {
+            @media (prefers-color-scheme: $mode) {
+                @content;
+            }
+        }
+    } @else {
+        [data-jsx-theme="#{$mode}"] {
+            @content;
+        }
+    }
+}
+
+@mixin color-scheme($name) {
+    @media (prefers-color-scheme: #{$name}) {
+        @content;
+    }
+}
+
+
+@mixin img-fluid {
+    max-width: 100%;
+    height: auto;
+}
+
+
+@mixin pagination-size($padding-y, $padding-x, $font-size, $border-radius) {
+    --#{$prefix}pagination-padding-x: #{$padding-x};
+    --#{$prefix}pagination-padding-y: #{$padding-y};
+    --#{$prefix}pagination-font-size: $font-size;
+    --#{$prefix}pagination-border-radius: #{$border-radius};
+}
+
+
+@mixin visually-hidden() {
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+
+    &:not(caption) {
+        position: absolute !important;
+    }
+}
+
+@mixin visually-hidden-focusable() {
+    &:not(:focus):not(:focus-within) {
+        @include visually-hidden();
+    }
+}
+
+
+@mixin reset-text {
+    font-family: $font-family-base;
+    font-style: normal;
+    font-weight: $font-weight-normal;
+    line-height: $line-height-base;
+    text-align: left;
+    text-align: start;
+    text-decoration: none;
+    text-shadow: none;
+    text-transform: none;
+    letter-spacing: normal;
+    word-break: normal;
+    white-space: normal;
+    word-spacing: normal;
+    line-break: auto;
+}
+
+
+@mixin gradient-bg($color: null) {
+    background: $color;
+
+    @if $enable-gradients {
+        background-image: var(--#{$prefix}gradient);
+    }
+}
+
+
+@mixin border-radius($radius: $border-radius, $fallback-border-radius: false) {
+    @if $enable-rounded {
+        border-radius: valid-radius($radius);
+    }
+    @else if $fallback-border-radius != false {
+        border-radius: $fallback-border-radius;
+    }
+}
+
+@mixin border-top-radius($radius: $border-radius) {
+    @if $enable-rounded {
+        border-top-left-radius: valid-radius($radius);
+        border-top-right-radius: valid-radius($radius);
+    }
+}
+
+@mixin border-end-radius($radius: $border-radius) {
+    @if $enable-rounded {
+        border-top-right-radius: valid-radius($radius);
+        border-bottom-right-radius: valid-radius($radius);
+    }
+}
+
+@mixin border-bottom-radius($radius: $border-radius) {
+    @if $enable-rounded {
+        border-bottom-right-radius: valid-radius($radius);
+        border-bottom-left-radius: valid-radius($radius);
+    }
+}
+
+@mixin border-start-radius($radius: $border-radius) {
+    @if $enable-rounded {
+        border-top-left-radius: valid-radius($radius);
+        border-bottom-left-radius: valid-radius($radius);
+    }
+}
+
+@mixin border-top-start-radius($radius: $border-radius) {
+    @if $enable-rounded {
+        border-top-left-radius: valid-radius($radius);
+    }
+}
+
+@mixin border-top-end-radius($radius: $border-radius) {
+    @if $enable-rounded {
+        border-top-right-radius: valid-radius($radius);
+    }
+}
+
+@mixin border-bottom-end-radius($radius: $border-radius) {
+    @if $enable-rounded {
+        border-bottom-right-radius: valid-radius($radius);
+    }
+}
+
+@mixin border-bottom-start-radius($radius: $border-radius) {
+    @if $enable-rounded {
+        border-bottom-left-radius: valid-radius($radius);
+    }
+}
+
+
+@mixin overlay-backdrop($zindex, $backdrop-bg, $backdrop-opacity) {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: $zindex;
+    width: 100vw;
+    height: 100vh;
+    background: $backdrop-bg;
+
+    &.fade {
+        opacity: 0;
+    }
+
+    &.show {
+        opacity: $backdrop-opacity;
+    }
+}
+
+
+@mixin transition($transition...) {
+    @if length($transition) == 0 {
+        $transition: $transition-base;
+    }
+
+    @if length($transition) > 1 {
+        @each $value in $transition {
+            @if $value == null or $value == none {
+                @warn "The keyword 'none' or 'null' must be used as a single argument.";
+            }
+        }
+    }
+
+    @if $enable-transitions {
+        @if nth($transition, 1) != null {
+            transition: $transition;
+        }
+
+        @if $enable-reduced-motion and nth($transition, 1) != null and nth($transition, 1) != none {
+            @media (prefers-reduced-motion: reduce) {
+                transition: none;
+            }
+        }
+    }
+}
+
+
+@mixin form-validation-state-selector($state) {
+    @if ($state == "valid" or $state == "invalid") {
+        .was-validated #{if(&, "&", "")}:#{$state},
+        #{if(&, "&", "")}.is-#{$state} {
+            @content;
+        }
+    } @else {
+        #{if(&, "&", "")}.is-#{$state} {
+            @content;
+        }
+    }
+}
+
+@mixin form-validation-state(
+    $state,
+    $color,
+    $icon,
+    $tooltip-color: color-contrast($color),
+    $tooltip-bg-color: rgba($color, $form-feedback-tooltip-opacity),
+    $focus-box-shadow: 0 0 $input-btn-focus-blur $input-focus-width rgba($color, $input-btn-focus-color-opacity),
+    $border-color: $color
+) {
+
+    .#{$state}-feedback {
+        display: none;
+        width: 100%;
+        margin-top: $form-feedback-margin-top;
+        font-size: $form-feedback-font-size;
+        font-style: $form-feedback-font-style;
+        color: $color;
+    }
+
+    .#{$state}-tooltip {
+        position: absolute;
+        top: 100%;
+        z-index: 5;
+        display: none;
+        max-width: 100%;
+        // padding: $form-feedback-tooltip-padding-y $form-feedback-tooltip-padding-x;
+        margin-top: .1rem;
+        // font-size: $form-feedback-tooltip-font-size;
+        // line-height: $form-feedback-tooltip-line-height;
+        color: $tooltip-color;
+        // background-color: $tooltip-bg-color;
+        // @include border-radius($form-feedback-tooltip-border-radius);
+    }
+
+    @include form-validation-state-selector($state) {
+        ~ .#{$state}-feedback,
+        ~ .#{$state}-tooltip {
+            display: block;
+        }
+    }
+
+    .form__input {
+        @include form-validation-state-selector($state) {
+            border-color: $border-color;
+
+            @if $enable-validation-icons {
+                padding-right: $input-height-inner;
+                // background-image: escape-svg($icon);
+                background-repeat: no-repeat;
+                background-position: right $input-height-inner-quarter center;
+                background-size: $input-height-inner-half $input-height-inner-half;
+            }
+
+            &:focus {
+                border-color: $border-color;
+                box-shadow: $focus-box-shadow;
+            }
+        }
+    }
+
+    textarea.form__input {
+        @include form-validation-state-selector($state) {
+
+            @if $enable-validation-icons {
+                padding-right: $input-height-inner;
+                background-position: top $input-height-inner-quarter right $input-height-inner-quarter;
+            }
+        }
+    }
+
+    .form-select {
+        @include form-validation-state-selector($state) {
+            border-color: $border-color;
+
+            @if $enable-validation-icons {
+                &:not([multiple]):not([size]),
+                &:not([multiple])[size="1"] {
+                    --#{$prefix}form-select-bg-icon: #{escape-svg($icon)};
+
+                    padding-right: $form-select-feedback-icon-padding-end;
+                    background-position: $form-select-bg-position, $form-select-feedback-icon-position;
+                    background-size: $form-select-bg-size, $form-select-feedback-icon-size;
+                }
+            }
+
+            &:focus {
+                border-color: $border-color;
+                box-shadow: $focus-box-shadow;
+            }
+        }
+    }
+
+    .form__input--color {
+        @include form-validation-state-selector($state) {
+            @if $enable-validation-icons {
+                width: add($form-color-width, $input-height-inner);
+            }
+        }
+    }
+}
+
+
+@mixin button-size($padding-y, $padding-x, $font-size, $border-radius) {
+    --#{$prefix}btn-padding-y: #{$padding-y};
+    --#{$prefix}btn-padding-x: #{$padding-x};
+    --#{$prefix}btn-font-size: #{$font-size};
+    --#{$prefix}btn-border-radius: #{$border-radius};
+}

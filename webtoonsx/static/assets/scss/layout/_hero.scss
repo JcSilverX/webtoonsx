@@ -1,0 +1,5 @@
+@use '../abstracts/' as *;
+
+.hero {
+    background: var(--color-gray-500);
+}

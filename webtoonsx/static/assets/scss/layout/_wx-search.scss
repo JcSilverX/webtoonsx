@@ -1,0 +1,167 @@
+@use '../abstracts/' as *;
+
+.wx-search {
+
+    &-btn {
+        --#{$prefix}color-opacity: .65;
+        --#{$prefix}outline-opacity: .35;
+        --#{$prefix}transition: all .4s;
+
+        background: var(--color-gray-200);
+        color: rgba(var(--color-black-000-rgb), var(--#{$prefix}color-opacity));
+        max-width: 100%;
+        @include border-radius(var(--#{$prefix}border-radius));
+        padding: 1rem .8rem;
+        outline: var(--#{$prefix}border-width) var(--#{$prefix}border-style) rgba(var(--color-black-000-rgb), var(--#{$prefix}outline-opacity));
+        @include transition(var(--#{$prefix}transition));
+
+        &:hover,
+        &:focus {
+            --#{$prefix}color-opacity: 1;
+            --#{$prefix}outline-opacity: 1;
+        }
+
+        &__container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        &__placeholder {
+            display: flex;
+            align-items: center;
+            gap: .4rem;
+        }
+
+        &__keys {
+            --#{$prefix}bg-opacity: .09;
+
+            min-width: 0;
+            background: rgba(var(--color-black-000-rgb), var(--#{$prefix}bg-opacity));
+            padding: .2rem .4rem;
+            font-size: 1rem;
+            @include border-radius(var(--#{$prefix}border-radius-sm));
+        }
+
+        @include media-breakpoint-up(xl) {
+            width: 28rem !important;
+        }
+
+        @include media-breakpoint-up(lg) {
+            width: 20rem;
+            position: absolute;
+            inset: auto 0;
+            margin: auto;
+        }
+
+        @include media-breakpoint-down(lg) {
+            background: initial !important;
+            outline: none !important;
+            font-size: 2rem !important;
+        }
+    }
+}
+
+.search {
+    display: flex;
+    align-items: center;
+    width: 100%;
+
+    &__label {
+
+    }
+
+    &__input {
+        border: none;
+        font-size: 1.6rem;
+    }
+
+    &__btn-clear {
+
+    }
+
+    &-command {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        user-select: none;
+
+        &__key {
+            background: vaR(--color-gray-300);
+            padding: .2rem .3rem;
+            border-radius: .2rem;
+            font-size: 1.1rem;
+        }
+    }
+}
+
+.searches {
+    text-align: center;
+
+    &__text {
+        font-size: 1.2rem;
+        user-select: none;
+    }
+}
+
+.spinner {
+    text-align: center;
+
+    &__border--search {
+        --#{$prefix}spinner-width: 5rem;
+        --#{$prefix}spinner-height: var(--#{$prefix}spinner-width);
+    }
+}
+
+@mixin search {
+    &-command {
+        &__key {
+            background: rgba(var(--color-black-000-rgb), .4);
+        }
+    }
+}
+
+@mixin wx-search {
+    --#{$prefix}color-opacity: .65;
+    --#{$prefix}outline-opacity: .65;
+
+    background: var(--color-gray-900);
+    color: rgba(var(--color-white-000-rgb), var(--#{$prefix}color-opacity));
+    outline: var(--#{$prefix}border-width) var(--#{$prefix}border-style) rgba(var(--color-white-000-rgb), var(--#{$prefix}outline-opacity));
+
+    &:hover,
+    &:focus {
+        --#{$prefix}color-opacity: .85;
+        --#{$prefix}outline-opacity: .85;
+    }
+
+    .wx-search-btn__keys {
+        --#{$prefix}bg-opacity: 1;
+    }
+}
+
+@if $enable-dark-mode {
+    @include color-mode(dark) {
+        @if $color-mode-type =="media-query" {
+            .wx-search-btn {
+                @include wx-search();
+            }
+
+            .search {
+                @include search();
+            }
+        }
+        @else {
+            .wx-search-btn,
+            &.wx-search-btn {
+                @include wx-search();
+            }
+
+            .search,
+            &.search {
+                @include search();
+            }
+        }
+    }
+}

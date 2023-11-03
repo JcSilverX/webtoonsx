@@ -1,0 +1,36 @@
+@use '../abstracts/' as *;
+
+.toggler {
+    --#{$prefix}toggler-color: #{$nav-light-color};
+    --#{$prefix}toggler-hover-color: #{$nav-light-hover-color};
+
+    color: var(--#{$prefix}toggler-color);
+    @include transition($btn-transition);
+
+    &:hover,
+    &:focus {
+        color: var(--#{$prefix}toggler-hover-color);
+    }
+
+}
+
+@mixin toggler-dark {
+    --#{$prefix}toggler-color: #{$nav-dark-color};
+    --#{$prefix}toggler-hover-color: #{$nav-dark-hover-color};
+}
+
+@if $enable-dark-mode {
+    @include color-mode(dark) {
+        @if $color-mode-type == "media-query" {
+            .toggler {
+                @include toggler-dark();
+            }
+        } @else {
+            .toggler {
+                &.toggler {
+                    @include toggler-dark();
+                }
+            }
+        }
+    }
+}

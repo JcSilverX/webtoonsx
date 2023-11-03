@@ -1,0 +1,378 @@
+@use './functions' as *;
+
+// global color
+$color-blue:                                                 #0d6efd !default;
+$color-blue-100:                                             #cfe2ff !default;
+$color-blue-200:                                             #9ec5fe !default;
+$color-blue-300:                                             #6ea8fe !default;
+$color-blue-400:                                             #3d8bfd !default;
+$color-blue-500:                                             #0d6efd !default;
+$color-blue-600:                                             #0a58ca !default;
+$color-blue-700:                                             #084298 !default;
+$color-blue-800:                                             #052c65 !default;
+$color-blue-900:                                             #031633 !default;
+
+$color-indigo:                                               #6610f2 !default;
+$color-indigo-100:                                           #e0cffc !default;
+$color-indigo-200:                                           #c29ffa !default;
+$color-indigo-300:                                           #a370f7 !default;
+$color-indigo-400:                                           #8540f5 !default;
+$color-indigo-500:                                           #6610f2 !default;
+$color-indigo-600:                                           #520dc2 !default;
+$color-indigo-700:                                           #3d0a91 !default;
+$color-indigo-800:                                           #290661 !default;
+$color-indigo-900:                                           #140330 !default;
+
+$color-purple:                                               #6f42c1 !default;
+$color-purple-100:                                           #e2d9f3 !default;
+$color-purple-200:                                           #c5b3e6 !default;
+$color-purple-300:                                           #a98eda !default;
+$color-purple-400:                                           #8c68cd !default;
+$color-purple-500:                                           #6f42c1 !default;
+$color-purple-600:                                           #59359a !default;
+$color-purple-700:                                           #432874 !default;
+$color-purple-800:                                           #2c1a4d !default;
+$color-purple-900:                                           #160d27 !default;
+
+$color-pink:                                                 #d63384 !default;
+$color-pink-100:                                             #f7d6e6 !default;
+$color-pink-200:                                             #efadce !default;
+$color-pink-300:                                             #e685b5 !default;
+$color-pink-400:                                             #de5c9d !default;
+$color-pink-500:                                             #d63384 !default;
+$color-pink-600:                                             #ab296a !default;
+$color-pink-700:                                             #801f4f !default;
+$color-pink-800:                                             #561435 !default;
+$color-pink-900:                                             #2b0a1a !default;
+
+$color-red:                                                  #dc3545 !default;
+$color-red-100:                                              #f8d7da !default;
+$color-red-200:                                              #f1aeb5 !default;
+$color-red-300:                                              #ea868f !default;
+$color-red-400:                                              #e35d6a !default;
+$color-red-500:                                              #dc3545 !default;
+$color-red-600:                                              #b02a37 !default;
+$color-red-700:                                              #842029 !default;
+$color-red-800:                                              #58151c !default;
+$color-red-900:                                              #2c0b0e !default;
+
+$color-orange:                                               #fd7e14 !default;
+$color-orange-100:                                           #ffe5d0 !default;
+$color-orange-200:                                           #fecba1 !default;
+$color-orange-300:                                           #feb272 !default;
+$color-orange-400:                                           #fd9843 !default;
+$color-orange-500:                                           #fd7e14 !default;
+$color-orange-600:                                           #ca6510 !default;
+$color-orange-700:                                           #984c0c !default;
+$color-orange-800:                                           #653208 !default;
+$color-orange-900:                                           #331904 !default;
+
+$color-yellow:                                               #f4b806 !default;
+$color-yellow-100:                                           #fff3cd !default;
+$color-yellow-200:                                           #ffe69c !default;
+$color-yellow-300:                                           #ffda6a !default;
+$color-yellow-400:                                           #ffcd39 !default;
+$color-yellow-500:                                           #ffc107 !default;
+$color-yellow-600:                                           #cc9a06 !default;
+$color-yellow-700:                                           #997404 !default;
+$color-yellow-800:                                           #664d03 !default;
+$color-yellow-900:                                           #332701 !default;
+
+$color-green:                                                #198754 !default;
+$color-green-100:                                            #d1e7dd !default;
+$color-green-200:                                            #a3cfbb !default;
+$color-green-300:                                            #75b798 !default;
+$color-green-400:                                            #479f76 !default;
+$color-green-500:                                            #198754 !default;
+$color-green-600:                                            #146c43 !default;
+$color-green-700:                                            #0f5132 !default;
+$color-green-800:                                            #0a3622 !default;
+$color-green-900:                                            #051b11 !default;
+
+$color-teal:                                                 #20c997 !default;
+$color-teal-100:                                             #d2f4ea !default;
+$color-teal-200:                                             #a6e9d5 !default;
+$color-teal-300:                                             #79dfc1 !default;
+$color-teal-400:                                             #4dd4ac !default;
+$color-teal-500:                                             #20c997 !default;
+$color-teal-600:                                             #1aa179 !default;
+$color-teal-700:                                             #13795b !default;
+$color-teal-800:                                             #0d503c !default;
+$color-teal-900:                                             #06281e !default;
+
+$color-cyan:                                                 #0dcaf0 !default;
+$color-cyan-100:                                             #cff4fc !default;
+$color-cyan-200:                                             #9eeaf9 !default;
+$color-cyan-300:                                             #6edff6 !default;
+$color-cyan-400:                                             #3dd5f3 !default;
+$color-cyan-500:                                             #0dcaf0 !default;
+$color-cyan-600:                                             #0aa2c0 !default;
+$color-cyan-700:                                             #087990 !default;
+$color-cyan-800:                                             #055160 !default;
+$color-cyan-900:                                             #032830 !default;
+
+$color-gray:                                                 #808080 !default;
+$color-gray-100:                                             #f8f9fa !default;
+$color-gray-200:                                             #e9ecef !default;
+$color-gray-300:                                             #dee2e6 !default;
+$color-gray-400:                                             #ced4da !default;
+$color-gray-500:                                             #adb5bd !default;
+$color-gray-600:                                             #6c757d !default;
+$color-gray-700:                                             #495057 !default;
+$color-gray-800:                                             #343a40 !default;
+$color-gray-900:                                             #212529 !default;
+
+$color-black:                                                #000 !default;
+
+$color-white:                                                #fff !default;
+
+$colors: (
+    "blue": (
+        "000": $color-blue,
+        "100": $color-blue-100,
+        "200": $color-blue-200,
+        "300": $color-blue-300,
+        "400": $color-blue-400,
+        "500": $color-blue-500,
+        "600": $color-blue-600,
+        "700": $color-blue-700,
+        "800": $color-blue-800,
+        "900": $color-blue-900,
+    ),
+    "indigo": (
+        "000": $color-indigo,
+        "100": $color-indigo-100,
+        "200": $color-indigo-200,
+        "300": $color-indigo-300,
+        "400": $color-indigo-400,
+        "500": $color-indigo-500,
+        "600": $color-indigo-600,
+        "700": $color-indigo-700,
+        "800": $color-indigo-800,
+        "900": $color-indigo-900,
+    ),
+    "purple": (
+        "000": $color-purple,
+        "100": $color-purple-100,
+        "200": $color-purple-200,
+        "300": $color-purple-300,
+        "400": $color-purple-400,
+        "500": $color-purple-500,
+        "600": $color-purple-600,
+        "700": $color-purple-700,
+        "800": $color-purple-800,
+        "900": $color-purple-900,
+    ),
+    "pink": (
+        "000": $color-pink,
+        "100": $color-pink-100,
+        "200": $color-pink-200,
+        "300": $color-pink-300,
+        "400": $color-pink-400,
+        "500": $color-pink-500,
+        "600": $color-pink-600,
+        "700": $color-pink-700,
+        "800": $color-pink-800,
+        "900": $color-pink-900,
+    ),
+    "red": (
+        "000": $color-red,
+        "100": $color-red-100,
+        "200": $color-red-200,
+        "300": $color-red-300,
+        "400": $color-red-400,
+        "500": $color-red-500,
+        "600": $color-red-600,
+        "700": $color-red-700,
+        "800": $color-red-800,
+        "900": $color-red-900,
+    ),
+    "orange": (
+        "000": $color-orange,
+        "100": $color-orange-100,
+        "200": $color-orange-200,
+        "300": $color-orange-300,
+        "400": $color-orange-400,
+        "500": $color-orange-500,
+        "600": $color-orange-600,
+        "700": $color-orange-700,
+        "800": $color-orange-800,
+        "900": $color-orange-900,
+    ),
+    "yellow": (
+        "000": $color-yellow,
+        "100": $color-yellow-100,
+        "200": $color-yellow-200,
+        "300": $color-yellow-300,
+        "400": $color-yellow-400,
+        "500": $color-yellow-500,
+        "600": $color-yellow-600,
+        "700": $color-yellow-700,
+        "800": $color-yellow-800,
+        "900": $color-yellow-900,
+    ),
+    "green": (
+        "000": $color-green,
+        "100": $color-green-100,
+        "200": $color-green-200,
+        "300": $color-green-300,
+        "400": $color-green-400,
+        "500": $color-green-500,
+        "600": $color-green-600,
+        "700": $color-green-700,
+        "800": $color-green-800,
+        "900": $color-green-900,
+    ),
+    "teal": (
+        "000": $color-teal,
+        "100": $color-teal-100,
+        "200": $color-teal-200,
+        "300": $color-teal-300,
+        "400": $color-teal-400,
+        "500": $color-teal-500,
+        "600": $color-teal-600,
+        "700": $color-teal-700,
+        "800": $color-teal-800,
+        "900": $color-teal-900,
+    ),
+    "cyan": (
+        "000": $color-cyan,
+        "100": $color-cyan-100,
+        "200": $color-cyan-200,
+        "300": $color-cyan-300,
+        "400": $color-cyan-400,
+        "500": $color-cyan-500,
+        "600": $color-cyan-600,
+        "700": $color-cyan-700,
+        "800": $color-cyan-800,
+        "900": $color-cyan-900,
+    ),
+    "gray": (
+        "000": $color-gray,
+        "100": $color-gray-100,
+        "200": $color-gray-200,
+        "300": $color-gray-300,
+        "400": $color-gray-400,
+        "500": $color-gray-500,
+        "600": $color-gray-600,
+        "700": $color-gray-700,
+        "800": $color-gray-800,
+        "900": $color-gray-900,
+    ),
+    "black": (
+        "000": $color-black,
+    ),
+    "white": (
+        "000": $color-white,
+    )
+) !default;
+
+$primary:                                                   $color-blue !default;
+$secondary:                                                 $color-gray-600 !default;
+$success:                                                   $color-green !default;
+$danger:                                                    $color-red !default;
+$warning:                                                   $color-yellow-500 !default;
+$info:                                                      $color-cyan !default;
+$light:                                                     $color-gray-100 !default;
+$dark:                                                      $color-gray-900 !default;
+
+$theme-colors: (
+    "primary":    $primary,
+    "secondary":  $secondary,
+    "success":    $success,
+    "info":       $info,
+    "warning":    $warning,
+    "danger":     $danger,
+    "light":      $light,
+    "dark":       $dark
+) !default;
+
+$primary-bg-rgb:                                            to-rgb($primary) !default;
+$secondary-bg-rgb:                                          to-rgb($secondary) !default;
+$success-bg-rgb:                                            to-rgb($success) !default;
+$danger-bg-rgb:                                             to-rgb($danger) !default;
+$warning-bg-rgb:                                            to-rgb($warning) !default;
+$info-bg-rgb:                                               to-rgb($info) !default;
+$light-bg-rgb:                                              to-rgb($light) !default;
+$dark-bg-rgb:                                               to-rgb($dark) !default;
+
+$theme-colors-rgb: (
+    "primary":    $primary-bg-rgb,
+    "secondary":  $secondary-bg-rgb,
+    "success":    $success-bg-rgb,
+    "info":       $info-bg-rgb,
+    "warning":    $warning-bg-rgb,
+    "danger":     $danger-bg-rgb,
+    "light":      $light-bg-rgb,
+    "dark":       $dark-bg-rgb
+) !default;
+
+$primary-text-emphasis:                                     shade-color($primary, 60%) !default;
+$secondary-text-emphasis:                                   shade-color($secondary, 60%) !default;
+$success-text-emphasis:                                     shade-color($success, 60%) !default;
+$info-text-emphasis:                                        shade-color($info, 60%) !default;
+$warning-text-emphasis:                                     shade-color($warning, 60%) !default;
+$danger-text-emphasis:                                      shade-color($danger, 60%) !default;
+$light-text-emphasis:                                       $color-gray-700 !default;
+$dark-text-emphasis:                                        $color-gray-700 !default;
+
+$theme-colors-text-emphasis: (
+    "primary":    $primary-text-emphasis,
+    "secondary":  $secondary-text-emphasis,
+    "success":    $success-text-emphasis,
+    "info":       $info-text-emphasis,
+    "warning":    $warning-text-emphasis,
+    "danger":     $danger-text-emphasis,
+    "light":      $light-text-emphasis,
+    "dark":       $dark-text-emphasis
+) !default;
+
+$primary-bg-subtle:                                         tint-color($primary, 80%) !default;
+$secondary-bg-subtle:                                       tint-color($secondary, 80%) !default;
+$success-bg-subtle:                                         tint-color($success, 80%) !default;
+$info-bg-subtle:                                            tint-color($info, 80%) !default;
+$warning-bg-subtle:                                         tint-color($warning, 80%) !default;
+$danger-bg-subtle:                                          tint-color($danger, 80%) !default;
+$light-bg-subtle:                                           mix($color-gray-100, $color-white) !default;
+$dark-bg-subtle:                                            $color-gray-400 !default;
+
+$theme-colors-bg-subtle: (
+    "primary":    $primary-bg-subtle,
+    "secondary":  $secondary-bg-subtle,
+    "success":    $success-bg-subtle,
+    "info":       $info-bg-subtle,
+    "warning":    $warning-bg-subtle,
+    "danger":     $danger-bg-subtle,
+    "light":      $light-bg-subtle,
+    "dark":       $dark-bg-subtle
+) !default;
+
+$primary-border-subtle:                                 tint-color($primary, 60%) !default;
+$secondary-border-subtle:                               tint-color($secondary, 60%) !default;
+$success-border-subtle:                                 tint-color($success, 60%) !default;
+$info-border-subtle:                                    tint-color($info, 60%) !default;
+$warning-border-subtle:                                 tint-color($warning, 60%) !default;
+$danger-border-subtle:                                  tint-color($danger, 60%) !default;
+$light-border-subtle:                                   $color-gray-200 !default;
+$dark-border-subtle:                                    $color-gray-500 !default;
+
+$theme-colors-border-subtle: (
+    "primary":    $primary-border-subtle,
+    "secondary":  $secondary-border-subtle,
+    "success":    $success-border-subtle,
+    "info":       $info-border-subtle,
+    "warning":    $warning-border-subtle,
+    "danger":     $danger-border-subtle,
+    "light":      $light-border-subtle,
+    "dark":       $dark-border-subtle
+) !default;
+
+
+$link-color:                                            $color-blue !default;
+$link-decoration:                                       underline !default;
+$link-shade-percentage:                                 20% !default;
+$link-hover-color:                                      shift-color($link-color, $link-shade-percentage) !default;
+$link-hover-decoration:                                 null !default;
+
+$link-color-dark:                                       tint-color($color-blue, 40%) !default;
+$link-hover-color-dark:                                 shift-color($link-color-dark, -$link-shade-percentage) !default;

@@ -1,0 +1,95 @@
+@use '../abstracts/' as *;
+
+:root,
+[data-jsx-theme="light"] {
+    @each $color, $shades in $colors {
+        @each $shade, $value in $shades {
+            --color-#{$color}-#{$shade}: #{$value};
+        }
+    }
+
+    @each $color, $shades in $colors {
+        @each $shade, $value in $shades {
+            --color-#{$color}-#{$shade}-rgb: #{to-rgb($value)};
+        }
+    }
+
+
+    @each $color, $value in $theme-colors {
+        --#{$prefix}#{$color}: #{$value};
+    }
+
+    @each $color, $value in $theme-colors-rgb {
+        --#{$prefix}#{$color}-rgb: #{$value};
+    }
+
+    @each $color, $value in $theme-colors-bg-subtle {
+        --#{$prefix}#{$color}-subtle: #{$value};
+    }
+
+    @each $color, $value in $theme-colors-text-emphasis {
+        --#{$prefix}#{$color}-text-emphasis: #{$value};
+    }
+
+
+    --#{$prefix}white-rgb: #{to-rgb($color-white)};
+    --#{$prefix}black-rgb: #{to-rgb($color-black)};
+
+
+    --#{$prefix}body-color: #{$body-color};
+    --#{$prefix}body-bg: #{$body-bg};
+    --#{$prefix}body-color-rgb: #{to-rgb($color-gray-900)};
+    --#{$prefix}body-bg-rgb: #{to-rgb($color-white)};
+
+
+    --#{$prefix}link-color: #{$link-color};
+    --#{$prefix}link-color-rgb: #{to-rgb($link-color)};
+    --#{$prefix}link-hover-color: #{$link-hover-color};
+    --#{$prefix}link-hover-color-rgb: #{to-rgb($link-hover-color)};
+
+
+    --#{$prefix}border-width: #{$border-width};
+    --#{$prefix}border-style: #{$border-style};
+    --#{$prefix}border-color: #{$border-color};
+    --#{$prefix}border-color-translucent: #{$border-color-translucent};
+
+    --#{$prefix}border-radius: #{$border-radius};
+    --#{$prefix}border-radius-sm: #{$border-radius-sm};
+    --#{$prefix}border-radius-lg: #{$border-radius-lg};
+    --#{$prefix}border-radius-xl: #{$border-radius-xl};
+    --#{$prefix}border-radius-xxl: #{$border-radius-xxl};
+    --#{$prefix}border-radius-pill: #{$border-radius-pill};
+
+
+    --#{$prefix}box-shadow: #{$box-shadow};
+    --#{$prefix}box-shadow-sm: #{$box-shadow-sm};
+    --#{$prefix}box-shadow-lg: #{$box-shadow-lg};
+    --#{$prefix}box-shadow-inset: #{$box-shadow-inset};
+
+
+    --#{$prefix}focus-ring-width: #{$focus-ring-width};
+    --#{$prefix}focus-ring-opacity: #{$focus-ring-opacity};
+    --#{$prefix}focus-ring-color: #{$focus-ring-color};
+}
+
+
+@if $enable-dark-mode {
+    @include color-mode(dark, true) {
+        color-scheme: dark;
+
+        --#{$prefix}body-color: #{$body-color-dark};
+        --#{$prefix}body-bg: #{$body-bg-dark};
+        --#{$prefix}body-color-rgb: #{to-rgb($color-gray-300)};
+        --#{$prefix}body-bg-rgb: #{to-rgb($color-gray-900)};
+
+
+        --#{$prefix}link-color: #{$link-color-dark};
+        --#{$prefix}link-hover-color: #{$link-hover-color-dark};
+        --#{$prefix}link-color-rgb: #{to-rgb($link-color-dark)};
+        --#{$prefix}link-hover-color-rgb: #{to-rgb($link-hover-color-dark)};
+
+
+        --#{$prefix}border-color: #{$border-color-dark};
+        --#{$prefix}border-color-translucent: #{$border-color-translucent-dark};
+    }
+}

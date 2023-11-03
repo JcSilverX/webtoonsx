@@ -1,0 +1,255 @@
+<header class="header header-expand--lg position-fixed top-0 w-100 px-3">
+    <a href="{% url 'home' %}" class="logo d-none d-lg-block">
+        <span class="logo__text ff-architects-daughter fs-28 fw-900 ls-wx">WebtoonsX</span>
+    </a>
+
+    <button
+            type="button"
+            class="toggler"
+            data-jsx-toggle="offcanvas"
+            data-jsx-target="#"
+    >
+        <i class="bi bi-list toggler__icon fs-24"></i>
+    </button>
+
+    <nav class="nav">
+        <ul class="nav__list">
+            <li class="nav__item">
+                <a href="#!" class="nav__link fs-12 text-uppercase d-none d-lg-block">genres</a>
+            </li>
+            <li class="nav__item">
+                <a href="#!" class="nav__link fs-12 text-uppercase d-none d-lg-block">popular</a>
+            </li>
+            <li class="nav__item">
+                <a href="#!" class="nav__link fs-12 text-uppercase d-none d-lg-block">novels</a>
+            </li>
+        </ul>
+    </nav>
+
+    <a href="{% url 'home' %}" class="logo logo--center">
+        <span class="logo__text ff-architects-daughter fs-30 fw-900 ls-wx d-lg-none">WX</span>
+    </a>
+
+    <nav class="nav ms-auto">
+        <ul class="nav__list">
+            <li class="nav__item">
+                <a href="#!" class="btn btn-jsx-wx nav__link fs-12 text-uppercase rounded-pill d-none d-lg-block" role="button">
+                    <i class="bi bi-kanban-fill"></i>
+                    publish
+                </a>
+            </li>
+            <li class="nav__item dropdown dropdown-jsx-wx">
+                <button
+                        type="button"
+                        id="theme"
+                        class="btn btn--link nav__link text-decoration-none px-lg-0"
+                        data-jsx-toggle="dropdown"
+                        data-jsx-auto-close="outside"
+                        aria-expanded="false"
+                >
+                    <span class="theme__icon--active">
+                        <use href=""></use>
+                        <i class="bi bi-caret-down-fill d-none"></i>
+                    </span>
+                    <span id="theme-text" class="d-none">Toggle theme</span>
+                </button>
+
+                <ul class="dropdown-menu dropdown-menu--lg-end"  data-jsx-placement="dropstart" style="--jsx-min-width: 12.8rem;">
+                    <li>
+                        <button
+                                type="button"
+                                class="dropdown-menu__item d-flex align-items-center"
+                                data-jsx-theme-value="light"
+                                aria-pressed="false"
+                        >
+                            <use href="#sun-fill"><i class="bi bi-sun-fill me-2"></i></use>
+                            Light
+                            <i class="bi bi-check2 ms-auto"></i>
+                        </button>
+                    </li>
+                    <li>
+                        <button
+                                type="button"
+                                class="dropdown-menu__item d-flex align-items-center"
+                                data-jsx-theme-value="dark"
+                                aria-pressed="false"
+                        >
+                            <use href="#moon-stars-fill"><i class="bi bi-moon-stars-fill me-2"></i></use>
+                            Dark
+                            <i class="bi bi-check2 ms-auto"></i>
+                        </button>
+                    </li>
+                    <li>
+                        <button
+                                type="button"
+                                class="dropdown-menu__item d-flex align-items-center"
+                                data-jsx-theme-value="auto"
+                                aria-pressed="false"
+                        >
+                            <use href="#circle-half"><i class="bi bi-circle-half me-2"></i></use>
+                            Auto
+                            <i class="bi bi-check2 ms-auto"></i>
+                        </button>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav_item">
+                <a href="#!" class="nav__link fs-12 d-none d-lg-block position-relative">
+                    <i class="bi bi-bell-fill fs-16"></i>
+                    <span class="position-absolute top-0 start-50 translate-middle p-1 ms-1 bg-danger border-0 rounded-circle d-none d-lg-block">
+                        <span class="visually-hidden">New alerts</span>
+                    </span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <button
+            type="button"
+            class="wx-search-btn"
+            data-jsx-toggle="modal"
+            data-jsx-target="#search"
+    >
+        <span class="wx-search-btn__container">
+            <span class="wx-search-btn__placeholder">
+                <i class="bi bi-search"></i>
+                <span class="fs-14 d-none d-lg-block">Search</span>
+            </span>
+
+            <span class="wx-search-btn__keys d-none d-lg-block">
+                <span>CTRL</span>
+                <span>K</span>
+            </span>
+        </span>
+    </button>
+
+    {% if user.is_authenticated %}
+        <div class="dropdown">
+            <button
+                    type="button"
+                    class="btn btn--link toggler py-0 ps-lg-3 ps-1 pe-0"
+                    data-jsx-toggle="dropdown"
+                    data-jsx-auto-close="outside"
+                    aria-expanded="false"
+            >
+                <i class="bi bi-person-circle fs-30 toggler__icon"></i>
+            </button>
+
+            <ul class="dropdown-menu dropdown-menu--end" style="--jsx-min-width: 32rem;">
+                <li>
+                    <div class="dropdown__header">
+                        <div class="d-flex align-items-center">
+                            <div class="d-flex align-items-center gap-2 user-select-none">
+                                <i class="bi bi-person-circle fs-32"></i>
+                                <span class="fw-bolder fs-16">{{ user.username }}</span>
+                            </div>
+                            <div class="dropdown ms-auto d-lg-none">
+                                <button
+                                        type="button"
+                                        class="btn btn--link btn-jsx-wx toggler border py-1 px-2"
+                                        data-jsx-toggle="dropdown"
+                                        data-jsx-auto-close="outside"
+                                        aria-expanded="false"
+                                >
+                                    <span class="toggler__icon d-grid gap-2" style="grid-template-columns: repeat(2, 2.5rem); place-items: center;">
+                                        <i class="bi bi-plus-lg fs-20"></i>
+                                        <i class="bi bi-caret-down-fill"></i>
+                                    </span>
+                                </button>
+
+                                <ul class="dropdown-menu dropdown-menu--end" style="--jsx-min-width: 28.8rem;">
+                                    <li>
+                                        <a href="#!" class="dropdown-menu__item text-capitalize fs-16">
+                                            <i class="bi bi-kanban"></i>
+                                            new series
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <a href="#!" class="dropdown-menu__item text-capitalize fs-16">
+                        <i class="bi bi-emoji-smile"></i>
+                        set status
+                    </a>
+                </li>
+                <li>
+                    <hr class="dropdown__divider border-0 border-bottom">
+                </li>
+                <li>
+                    <a href="#!" class="dropdown-menu__item text-capitalize fs-16">
+                        <i class="bi bi-person"></i>
+                        your profile
+                    </a>
+                </li>
+                <li>
+                    <hr class="dropdown__divider border-0 border-bottom">
+                </li>
+                <li>
+                    <a href="#!" class="dropdown-menu__item text-capitalize fs-16">
+                        <i class="bi bi-columns-gap"></i>
+                        your dashboard
+                    </a>
+                </li>
+                <li>
+                    <a href="#!" class="dropdown-menu__item text-capitalize fs-16">
+                        <i class="bi bi-kanban"></i>
+                        your series
+                    </a>
+                </li>
+                <li>
+                    <a href="#!" class="dropdown-menu__item text-capitalize fs-16">
+                        <i class="bi bi-star"></i>
+                        your stars
+                    </a>
+                </li>
+                <li>
+                    <hr class="dropdown__divider border-0 border-bottom">
+                </li>
+                <li>
+                    <a href="#!" class="dropdown-menu__item text-capitalize fs-16 position-relative d-lg-none">
+                        <i class="bi bi-bell"></i>
+                        <span class="position-absolute translate-middle p-1 bg-danger border-0 rounded-circle" style="top: .1rem; margin-left: -.6rem;">
+                            <span class="visually-hidden">New alerts</span>
+                        </span>
+                        notifications
+                    </a>
+                </li>
+                <li>
+                    <a href="#!" class="dropdown-menu__item text-capitalize fs-16">
+                        <i class="bi bi-heart"></i>
+                        subscribed
+                    </a>
+                </li>
+                <li>
+                    <hr class="dropdown__divider border-0 border-bottom">
+                </li>
+                <li>
+                   <a href="#!" class="dropdown-menu__item text-capitalize fs-16">
+                        <i class="bi bi-gear"></i>
+                        settings
+                    </a>
+                </li>
+                <li>
+                    <hr class="dropdown__divider border-0 border-bottom">
+                </li>
+                <li>
+                    <a href="#!" class="dropdown-menu__item text-capitalize fs-16">
+                        <i class="bi bi-people"></i>
+                        <span class="ff-architects-daughter fs-20 fw-900 ls-wx">WebtoonsX</span> support
+                    </a>
+                </li>
+                <li>
+                    <hr class="dropdown__divider border-0 border-bottom">
+                </li>
+                <li>
+                    <a href="#!" class="dropdown-menu__item text-capitalize fs-16">
+                        sign out
+                    </a>
+                </li>
+            </ul>
+        </div>
+    {% endif %}
+</header>

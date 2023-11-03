@@ -1,0 +1,47 @@
+@use '../abstracts/' as *;
+
+.daily-tabs {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    grid-template-areas:
+        "daily-tabs__header"
+        "daily-tabs__content";
+
+    &__header {
+        grid-area: daily-tabs__header;
+    }
+
+    &__content {
+        grid-area: daily-tabs__content;
+    }
+}
+
+.daily-tabs__header {
+    min-height: 6.5rem;
+
+    display: grid;
+    grid-template-columns: auto minmax(20rem, 90rem) auto;
+    grid-auto-rows: auto;
+
+    & > * {
+        grid-column: 2 / 3;
+    }
+}
+
+.daily-tabs__wrapper {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    padding: 0 2rem;
+}
+
+.daily-tabs__content {
+    display: grid;
+    grid-template-columns: auto minmax(20rem, 90rem) auto;
+    grid-auto-rows: auto;
+
+    padding: .5rem 0 6rem;
+
+    & > * {
+        grid-column: 2 / 3;
+    }
+}

@@ -1,0 +1,142 @@
+@use '../abstracts/' as *;
+
+.header {
+    --#{$prefix}navbar-bg: #{$navbar-bg};
+    --#{$prefix}navbar-padding-x: #{if($navbar-padding-x == null, 0, $navbar-padding-x)};
+    --#{$prefix}navbar-padding-y: #{$navbar-padding-y};
+
+    background-color: var(--#{$prefix}navbar-bg);
+
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: var(--#{$prefix}navbar-padding-y) var(--#{$prefix}navbar-padding-x);
+    min-height: 6.5rem;
+    z-index: $zindex-fixed;
+    box-shadow: 0 .2rem .5rem 0 rgba($color-black, .5);
+}
+
+.logo {
+    --#{$prefix}logo-font-size: #{$logo-font-size};
+    --#{$prefix}logo-margin-end: #{$logo-margin-end};
+    --#{$prefix}logo-color: #{$logo-light-color};
+    --#{$prefix}logo-hover-color: #{$logo-light-hover-color};
+
+    font-size: var(--#{$prefix}logo-font-size);
+    margin-right: var(--#{$prefix}logo-margin-end);
+    color: var(--#{$prefix}logo-color);
+    text-decoration: if($link-decoration == none, null, none);
+    white-space: nowrap;
+    @include transition($transition-base);
+
+    &:hover,
+    &:focus {
+        color: var(--#{$prefix}logo-hover-color);
+        text-decoration: if($link-hover-decoration == underline, none, null);
+    }
+
+    &__text {
+
+    }
+
+    &--center {
+        position: absolute;
+        max-width: min-content;
+        inset: 0;
+        margin: auto;
+
+        display: grid;
+        place-items: center;
+    }
+}
+
+.header-expand {
+    @each $breakpoint in map-keys($grid-breakpoints) {
+        $next: breakpoint-next($breakpoint, $grid-breakpoints);
+        $infix: breakpoint-infix($next, $grid-breakpoints);
+
+        &-#{$infix} {
+            @include media-breakpoint-up($next) {
+                flex-wrap: nowrap;
+                justify-content: flex-start;
+
+                .nav__list {
+
+                }
+
+                .nav__item {
+
+                }
+
+                .nav__link {
+
+                }
+
+                .dropdown {
+                    .toggler {
+                        display: block;
+                    }
+
+                    &-menu {
+
+                    }
+                }
+
+                .toggler {
+                    display: none;
+                }
+
+                .offcanvas {
+                    position: static;
+                    z-index: auto;
+                    flex-grow: 1;
+                    width: auto !important;
+                    height: auto !important;
+                    visibility: visible !important;
+                    background-color: transparent !important;
+                    border: 0 !important;
+                    transform: none !important;
+                    box-shadow: none !important;
+                    @include transition(none);
+
+                    &__header {
+                        display: none;
+                    }
+
+                    &__body {
+                        display: flex;
+                        flex-grow: 0;
+                        padding: 0;
+                        overflow-y: visible;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@mixin navbar-dark() {
+    --#{$prefix}navbar-bg: #{$navbar-bg-dark};
+
+    .logo {
+        --#{$prefix}logo-color: #{$logo-dark-color};
+        --#{$prefix}logo-hover-color: #{$logo-dark-hover-color};
+    }
+}
+
+@if $enable-dark-mode {
+    @include color-mode(dark) {
+        @if $color-mode-type == "media-query" {
+            .header {
+                @include navbar-dark();
+            }
+        } @else {
+            .header {
+                &.header {
+                    @include navbar-dark();
+                }
+            }
+        }
+    }
+}

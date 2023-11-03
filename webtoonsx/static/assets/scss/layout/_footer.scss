@@ -1,0 +1,31 @@
+@use '../abstracts/' as *;
+
+.footer {
+    min-height: 6.5rem; // 65px
+
+    background: var(--#{$prefix}footer-bg);
+    display: grid;
+    place-items: center;
+    box-shadow: 0 -.2rem .5rem 0 rgba($color-black, .5);
+}
+
+@mixin footer-dark() {
+    --#{$prefix}footer-bg: #{$navbar-bg-dark};
+}
+
+
+@if $enable-dark-mode {
+    @include color-mode(dark) {
+        @if $color-mode-type == "media-query" {
+            .footer {
+                @include footer-dark();
+            }
+        } @else {
+            .footer {
+                &.footer {
+                    @include footer-dark();
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,22 @@
+{
+  "name": "webtoonsx",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "compile": "sass --watch --no-source-map webtoonsx/static/assets/scss/style.scss webtoonsx/static/assets/css/style.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/JcSilverX/webtoonsx.git"
+  },
+  "author": "JcSilverX",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/JcSilverX/webtoonsx/issues"
+  },
+  "homepage": "https://github.com/JcSilverX/webtoonsx#readme",
+  "dependencies": {
+    "sass": "^1.69.5"
+  }
+}

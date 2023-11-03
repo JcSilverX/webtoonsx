@@ -1,0 +1,58 @@
+@use '../abstracts/' as *;
+
+.nav {
+    --#{$prefix}nav-link-padding-x: #{$nav-link-padding-x};
+    --#{$prefix}nav-link-padding-y: #{$nav-link-padding-y};
+    --#{$prefix}nav-link-font-size: #{$nav-link-font-size};
+    --#{$prefix}nav-link-font-weight: #{$nav-link-font-weight};
+    --#{$prefix}nav-link-color: #{$nav-light-color};
+    --#{$prefix}nav-link-hover-color: #{$nav-light-hover-color};
+    --#{$prefix}nav-link-disabled-color: #{$nav-light-disabled-color};
+
+    &__list {
+        display: flex;
+        gap: var(--#{$prefix}nav-link-padding-x);
+        align-items: center;
+    }
+
+    &__item {
+
+    }
+
+    &__link {
+        font-size: var(--#{$prefix}nav-link-font-size);
+        font-weight: var(--#{$prefix}nav-link-font-weight);
+        color: var(--#{$prefix}nav-link-color);
+        white-space: nowrap;
+        @include transition($nav-link-transition);
+
+        &:hover,
+        &:focus,
+        &.active {
+            color: var(--#{$prefix}nav-link-hover-color);
+        }
+    }
+}
+
+
+@mixin nav-dark {
+    --#{$prefix}nav-link-color: #{$nav-dark-color};
+    --#{$prefix}nav-link-hover-color: #{$nav-dark-hover-color};
+    --#{$prefix}nav-link-disabled-color: #{$nav-dark-disabled-color};
+}
+
+@if $enable-dark-mode {
+    @include color-mode(dark) {
+        @if $color-mode-type == "media-query" {
+            .nav {
+                @include nav-dark();
+            }
+        } @else {
+            .nav {
+                &.nav {
+                    @include nav-dark();
+                }
+            }
+        }
+    }
+}
