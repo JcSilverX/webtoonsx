@@ -7,5 +7,5 @@ import './src/components/Toast.js';
 // webtoonsx
 import './src/components/webtoonsx/ColorModes.js';
 import './src/components/webtoonsx/DailyTabs.js';
-import './src/components/webtoonsx/Messages.js';
+import './src/components/webtoonsx/Notifications.js';
 import './src/components/webtoonsx/Search.js';
