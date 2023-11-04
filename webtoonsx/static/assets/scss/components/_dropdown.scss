@@ -47,8 +47,23 @@
         @include border-radius(var(--#{$prefix}dropdown-border-radius));
         box-shadow: var(--#{$prefix}box-shadow);
 
+        &.fade {
+            display: block;
+            opacity: 0;
+            transform: translateY(-1.6rem);
+            transition: transform 150ms ease-in-out,
+                        opacity 150ms ease-in-out;
+            pointer-events: none;
+        }
+
         &.show {
             display: block;
+
+            &.fade {
+                opacity: 1;
+                pointer-events: auto;
+                transform: translateY(0);
+            }
         }
 
         &--scrollable {
@@ -131,8 +146,6 @@
     }
 }
 
-
-
 .dropdown {
     .dropup {
         top: auto;
@@ -162,7 +175,7 @@
 @include media-breakpoint-down(lg) {
     .dropdown-#{$prefix}wx {
         position: absolute;
-        top: 20rem;
+        top: 15rem;
         right: 0;
 
         .btn {
@@ -186,15 +199,3 @@
         }
     }
 }
-
-/*
-@media (max-height: 576px) {
-    .dropdown-menu {
-        --#{$prefix}dropdown-bg: red;
-        max-height: calc(100vh - 8rem);
-        overflow-y: auto;
-    }
-}
-
- */
-
