@@ -1,5 +1,7 @@
 # webtoonsx
 node_modules/
+style.css
+
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
