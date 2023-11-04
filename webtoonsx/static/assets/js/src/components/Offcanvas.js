@@ -186,8 +186,10 @@ window.addEventListener(EVENT_LOAD, () => {
 });
 
 window.addEventListener(EVENT_RESIZE, () => {
-    for (const element of SelectorEngine.find('[aria-modal][class*=show][class*=offcanvas--]')) {
-        Offcanvas.getOrCreateInstance(element).hide();
+    for (const element of SelectorEngine.find('[aria-modal][class*=show][class*=offcanvas-')) {
+        if (getComputedStyle(element).position !== 'fixed') {
+            Offcanvas.getOrCreateInstance(element).hide();
+        }
     }
 });
 
