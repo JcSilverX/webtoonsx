@@ -64,19 +64,14 @@
             @include media-breakpoint-up($breakpoint) {
                 $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
 
-                --#{$prefix}min-width: min-content;
-
                 &.dropdown-menu-#{$infix}-start {
-                    min-width: var(--#{$prefix}min-width);
                     left: 0;
                     right: auto;
                 }
 
                 &.dropdown-menu-#{$infix}-end {
-                    min-width: var(--#{$prefix}min-width);
                     right: 0;
                     left: auto;
-
                 }
             }
         }
