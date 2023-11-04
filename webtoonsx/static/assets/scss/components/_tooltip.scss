@@ -85,6 +85,7 @@
     border-left-width: 0;
 }
 
+.tooltip:not([data-jsx-placement])::before,
 .tooltip[data-jsx-placement="bottom"]::before {
     --#{$prefix}translateX: -50%;
 
@@ -92,6 +93,7 @@
     left: 50%;
 }
 
+.tooltip:not([data-jsx-placement])::after,
 .tooltip[data-jsx-placement="bottom"]::after {
     --#{$prefix}translateX: -50%;
 
