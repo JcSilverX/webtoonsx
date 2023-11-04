@@ -32,12 +32,14 @@
 
     <nav class="nav ms-auto">
         <ul class="nav__list">
+            {% if user.is_authenticated %}
             <li class="nav__item">
                 <a href="#!" class="btn btn-jsx-wx nav__link fs-12 text-uppercase rounded-pill d-none d-lg-block" role="button">
                     <i class="bi bi-kanban-fill"></i>
                     publish
                 </a>
             </li>
+            {% endif %}
             <li class="nav__item dropdown dropdown-jsx-wx">
                 <button
                         type="button"
@@ -93,6 +95,7 @@
                     </li>
                 </ul>
             </li>
+            {% if user.is_authenticated %}
             <li class="nav_item">
                 <a href="#!" class="nav__link fs-12 d-none d-lg-block position-relative">
                     <i class="bi bi-bell-fill fs-16"></i>
@@ -101,6 +104,14 @@
                     </span>
                 </a>
             </li>
+            {% else %}
+            <li class="nav__item">
+                <a href="#!" class="nav__link text-uppercase fs-12 d-none d-lg-block">sign in</a>
+            </li>
+            <li class="nav__item">
+                <a href="#!" class="nav__link text-uppercase fs-12 d-none d-lg-block">sign up</a>
+            </li>
+            {% endif %}
         </ul>
     </nav>
 
@@ -251,5 +262,14 @@
                 </li>
             </ul>
         </div>
+    {% else %}
+    <button
+            type="button"
+            class="btn btn--link toggler py-0 ps-lg-3 ps-1 pe-0"
+            data-jsx-toggle="offcanvas"
+            data-jsx-target="#"
+    >
+        <i class="bi bi-three-dots toggler__icon fs-24"></i>
+    </button>
     {% endif %}
 </header>
