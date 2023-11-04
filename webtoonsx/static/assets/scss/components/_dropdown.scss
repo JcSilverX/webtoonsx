@@ -33,8 +33,7 @@
 
         position: absolute;
         z-index: var(--#{$prefix}dropdown-zindex);
-        opacity: 0;
-        visibility: hidden;
+        display: none;
         min-width: var(--#{$prefix}dropdown-min-width);
         padding: var(--#{$prefix}dropdown-padding-y) var(--#{$prefix}dropdown-padding-x);
         margin: 0;
@@ -47,17 +46,14 @@
         border: var(--#{$prefix}dropdown-border-width) solid var(--#{$prefix}dropdown-border-color);
         @include border-radius(var(--#{$prefix}dropdown-border-radius));
         box-shadow: var(--#{$prefix}box-shadow);
-        top: calc(100% + .4rem);
-        transform: translateY(-1rem);
-        transition: all 150ms ease-in-out;
-        pointer-events: none;
-
 
         &.show {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-            pointer-events: auto;
+            display: block;
+        }
+
+        &--scrollable {
+            max-height: calc(100vh - 8rem);
+            overflow-y: auto;
         }
 
         @each $breakpoint in map-keys($grid-breakpoints) {
@@ -190,3 +186,15 @@
         }
     }
 }
+
+/*
+@media (max-height: 576px) {
+    .dropdown-menu {
+        --#{$prefix}dropdown-bg: red;
+        max-height: calc(100vh - 8rem);
+        overflow-y: auto;
+    }
+}
+
+ */
+
