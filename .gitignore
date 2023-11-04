@@ -1,6 +1,7 @@
 # webtoonsx
 node_modules/
 css/
+migrations/
 
 
 # Byte-compiled / optimized / DLL files
