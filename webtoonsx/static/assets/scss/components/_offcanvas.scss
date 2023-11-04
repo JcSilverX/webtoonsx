@@ -45,7 +45,7 @@
                 left: 0;
                 width: var(--#{$prefix}offcanvas-width);
                 border-right: var(--#{$prefix}offcanvas-border-width) solid var(--#{$prefix}offcanvas-border-color);
-                transform: translateX(-100%);
+                transform: var(--#{$prefix}offcanvas-transform, translateX(-100%));
             }
 
             &.offcanvas--end {
@@ -53,7 +53,7 @@
                 right: 0;
                 width: var(--#{$prefix}offcanvas-width);
                 border-left: var(--#{$prefix}offcanvas-border-width) solid var(--#{$prefix}offcanvas-border-color);
-                transform: translateX(100%);
+                transform: var(--#{$prefix}offcanvas-transform, translateX(100%));
             }
 
             &.offcanvas--top {
@@ -63,7 +63,7 @@
                 height: var(--#{$prefix}offcanvas-height);
                 max-height: 100%;
                 border-bottom: var(--#{$prefix}offcanvas-border-width) solid var(--#{$prefix}offcanvas-border-color);
-                transform: translateY(-100%);
+                transform: var(--#{$prefix}offcanvas-transform, translateY(-100%));
             }
 
             &.offcanvas--bottom {
@@ -72,7 +72,7 @@
                 height: var(--#{$prefix}offcanvas-height);
                 max-height: 100%;
                 border-top: var(--#{$prefix}offcanvas-border-width) solid var(--#{$prefix}offcanvas-border-color);
-                transform: translateY(100%);
+                transform: var(--#{$prefix}offcanvas-transform, translateY(100%));
             }
 
             &.showing,
