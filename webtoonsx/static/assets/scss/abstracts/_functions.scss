@@ -51,3 +51,22 @@
     }
     @return $return;
 }
+
+
+@function map-next($name, $map: $map, $map-names: map-keys($map)) {
+    $n: index($map-names, $name);
+
+    @if not $n {
+        @error "map name `#{$name}` not found in `#{$map}`.";
+    }
+    @return if($n < length($map-names), nth($map-names, $n + 1), null);
+}
+
+@function map-prev($name, $map: $map, $map-names: map-keys($map)) {
+    $n: index($map-names, $name);
+
+    @if not $n {
+        @error "map name `#{$name}` not found in `#{$map}`.";
+    }
+    @return if($n - 1 < 1, null, nth($map-names, $n - 1));
+}
