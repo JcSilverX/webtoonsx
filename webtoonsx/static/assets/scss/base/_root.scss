@@ -14,6 +14,20 @@
         }
     }
 
+    @each $color, $shades in $colors {
+        @each $shade, $value1 in $shades {
+            $pv: map-prev($shade, $shades);
+            $value2: map-get($shades, $pv);
+
+            @if not $value2 {
+                $pv: "000";
+                $value2: map-get($shades, $pv);
+            }
+
+            --color-#{$color}-#{$pv}-#{$shade}-tertiary:  #{mix($value2, $value1, 50%)};
+        }
+    }
+
 
     @each $color, $value in $theme-colors {
         --#{$prefix}#{$color}: #{$value};
