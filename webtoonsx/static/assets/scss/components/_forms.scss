@@ -70,8 +70,8 @@
             padding: $input-padding-y $input-padding-x;
             margin: (-$input-padding-y) (-$input-padding-x);
             margin-inline-end: $input-padding-x;
-            // color: $form-file-button-color;
-            // @include gradient-bg($form-file-button-bg);
+            color: $form-file-button-color;
+            @include gradient-bg($form-file-button-bg);
             pointer-events: none;
             border-color: inherit;
             border-style: solid;
@@ -82,7 +82,7 @@
         }
 
         &:hover:not(:disabled):not([readonly])::file-selector-button {
-            // background-color: $form-file-button-hover-bg;
+            background-color: $form-file-button-hover-bg;
         }
     }
 }
