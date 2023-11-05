@@ -78,7 +78,7 @@
             border-width: 0;
             border-inline-end-width: $input-border-width;
             border-radius: 0;
-            // @include transition($btn-transition);
+            @include transition($btn-transition);
         }
 
         &:hover:not(:disabled):not([readonly])::file-selector-button {
