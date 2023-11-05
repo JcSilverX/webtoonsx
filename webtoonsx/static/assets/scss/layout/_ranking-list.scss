@@ -1,9 +1,9 @@
 @use '../abstracts/' as *;
 
 .ranking-list {
-    --#{$prefix}ranking-list-bg: var(--#{$prefix}body-color-rgb);
+    --#{$prefix}ranking-list-bg: var(--#{$prefix}tertiary-bg);
 
-    background: rgba(var(--#{$prefix}ranking-list-bg), .125);
+    background: var(--#{$prefix}ranking-list-bg);
 
     display: grid;
     grid-template-columns: auto minmax(20rem, 90rem) auto;
