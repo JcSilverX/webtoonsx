@@ -1,0 +1,10 @@
+@use '../abstracts/' as *;
+
+.sign-out {
+    --#{$prefix}sign-in-width: 34rem;
+    --#{$prefix}sign-in-margin: 1.6rem;
+    
+    width: var(--#{$prefix}sign-in-width);
+    margin: 0 auto;
+    padding-top: 6.5rem;
+}
