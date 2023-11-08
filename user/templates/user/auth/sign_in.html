@@ -1,0 +1,40 @@
+{% extends 'user/layouts/base.html' %}
+
+{% block title %}
+    Sign in to WebtoonsX - WebtoonsX
+{% endblock %}
+
+{% block content %}
+
+    <div class="sign-in px-3">
+        <div class="sign-in__header">
+            <a href="{% url 'home' %}" class="ff-architects-daughter fs-40 fw-900 ls-wx">WX</a>
+            <h5 class="sign-in__title fs-24 fw-normal ls-wx">Sign in to <span class="ff-architects-daughter fs-26 fw-900 ls-wx">WebtoonsX</span></h5>
+        </div>
+        <div class="sign-in__body border p-3 rounded">
+            <form method="POST" action="{% url 'login' %}" class="form">
+                {% csrf_token %}
+
+                <div class="mb-3">
+                    <label for="id_username-or-email" class="form__label">Username or email address</label>
+                    <input type="text" name="username-or-email" id="id_username-or-email" class="form__input fs-14">
+                </div>
+                
+                <div class="mb-3">
+                    <div class="d-flex">
+                        <label for="id_password" class="form__label">Password</label>
+                        <a href="#!" class="fs-12 ms-auto text-blue-500">Forgot password?</a>
+                    </div>
+                    <input type="password" name="password" id="id_password" class="form__input fs-14">
+                </div>
+                
+                <button type="submit" class="btn btn-jsx-wx w-100 fs-14">Sign in</button>
+
+            </form>
+        </div>
+        <div class="sign-in__footer border p-3 rounded">
+            New to <span class="ff-architects-daughter fs-16 fw-900 ls-wx">WebtoonsX</span> ? <a href="#!" class="text-blue-500">Create an account</a>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'user/layouts/base.html' %}
+
+{% block title %}
+    Logout
+{% endblock %}
+
+{% block content %}
+
+    <div class="sign-out">
+        <div class="text-center">
+            <a href="{% url 'home' %}" class="ff-architects-daughter fs-40 fw-900 ls-wx">WX</a>
+        </div>
+
+        <form method="POST" action="{% url 'logout' %}" class="form">
+            {% csrf_token %}
+
+            <div class="mb-3">
+                <h5 class="fs-24 text-center fw-normal">Are you sure you want to sign out?</h5>
+            </div>
+
+            <div class="d-flex align-items-center gap-2 user-select-none border rounded p-3 mb-3">
+                <i class="bi bi-person-circle fs-32"></i>
+                Signed in as {{ user.username }}
+            </div>
+            
+            <button type="submit" class="btn btn-jsx-wx w-100 fs-14" name="sign-out" value="logout" style="padding: 1rem .75rem !important;">Sign out</button>
+        </form>
+    </div>
+
+{% endblock %}
