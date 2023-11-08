@@ -106,7 +106,7 @@
             </li>
             {% else %}
             <li class="nav__item">
-                <a href="#!" class="btn btn-jsx-wx nav__link text-uppercase fs-12 rounded-pill d-none d-lg-block">sign in</a>
+                <a href="{% url 'login' %}" class="btn btn-jsx-wx nav__link text-uppercase fs-12 rounded-pill d-none d-lg-block">sign in</a>
             </li>
             <li class="nav__item">
                 <a href="#!" class="btn btn-jsx-wx nav__link text-uppercase fs-12 rounded-pill d-none d-lg-block">sign up</a>
@@ -256,7 +256,7 @@
                     <hr class="dropdown__divider border-0 border-bottom">
                 </li>
                 <li>
-                    <a href="#!" class="dropdown-menu__item text-capitalize fs-16">
+                    <a href="{% url 'logout' %}" class="dropdown-menu__item text-capitalize fs-16">
                         sign out
                     </a>
                 </li>
