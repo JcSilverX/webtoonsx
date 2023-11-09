@@ -26,6 +26,7 @@
         word-wrap: break-word;
         transform: translateX(var(--#{$prefix}translateX, 0)) translateY(var(--#{$prefix}translateY, 0));
         transition: transform 150ms ease-in-out, opacity 150ms ease-in-out;
+        pointer-events: none;
     }
 
     &::before {
@@ -46,10 +47,11 @@
         border: var(--#{$prefix}tooltip-arrow-width) solid transparent;
     }
 
-    &:hover::before,
-    &:hover::after {
+    &.tooltip--open::before,
+    &.tooltip--open::after {
         display: block;
         opacity: 1;
+        pointer-events: auto;
     }
 }
 
