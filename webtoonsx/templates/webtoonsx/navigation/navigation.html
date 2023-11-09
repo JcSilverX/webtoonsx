@@ -155,20 +155,18 @@
                                 <span class="fw-bolder fs-16">{{ user.username }}</span>
                             </div>
                             <div class="dropdown ms-auto d-lg-none">
-                                <div data-jsx-toggle="tooltip" data-jsx-placement="left" data-jsx-title="Publish...">
-                                    <button
-                                            type="button"
-                                            class="btn btn--link btn-jsx-wx toggler border p-0"
-                                            data-jsx-toggle="dropdown"
-                                            data-jsx-auto-close="outside"
-                                            aria-expanded="false"
-                                    >
-                                        <span class="toggler__icon d-grid gap-2" style="grid-template-columns: repeat(2, 2.5rem); place-items: center;">
-                                            <i class="bi bi-plus-lg fs-20"></i>
-                                            <i class="bi bi-caret-down-fill"></i>
-                                        </span>
-                                    </button>
-                                </div>
+                                <button
+                                        type="button"
+                                        class="btn btn--link btn-jsx-wx toggler border p-0"
+                                        data-jsx-toggle="dropdown"
+                                        data-jsx-auto-close="outside"
+                                        aria-expanded="false"
+                                >
+                                    <span class="toggler__icon d-grid gap-2" data-jsx-toggle="tooltip" data-jsx-placement="left" data-jsx-title="Publish..." style="grid-template-columns: repeat(2, 2.5rem); place-items: center;">
+                                        <i class="bi bi-plus-lg fs-20"></i>
+                                        <i class="bi bi-caret-down-fill"></i>
+                                    </span>
+                                </button>
 
                                 <ul class="dropdown-menu fade dropdown-menu--end" style="--jsx-dropdown-min-width: 26.8rem;">
                                     <li>
