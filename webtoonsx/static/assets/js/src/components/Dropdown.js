@@ -13,6 +13,7 @@ const EVENT_KEYDOWN = 'keydown';
 
 const CLASS_NAME_SHOW = 'show';
 
+const SELECTOR_DROPDOWN = '.dropdown';
 const SELECTOR_DROPDOWN_MENU = '.dropdown-menu';
 const SELECTOR_NAV = '.nav';
 const SELECTOR_DATA_TOGGLE = '[data-jsx-toggle="dropdown"]';
@@ -32,7 +33,7 @@ export default class Dropdown extends BaseComponent {
     constructor(element, config) {
         super(element, config);
 
-        this._parent = this._element.parentNode;
+        this._parent = this._element.closest(SELECTOR_DROPDOWN);
         this._menu = SelectorEngine.findOne(SELECTOR_DROPDOWN_MENU, this._parent);
 
         this._addEventListeners();
