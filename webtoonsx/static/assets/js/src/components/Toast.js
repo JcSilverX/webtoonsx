@@ -78,7 +78,7 @@ export default class Toast extends BaseComponent {
     }
 
     hide() {
-        if (!this.isShown) return;
+        if (!this.isShown()) return;
 
         const complete = () => {
             this._element.classList.remove(CLASS_NAME_SHOWING, CLASS_NAME_SHOW);
