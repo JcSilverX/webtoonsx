@@ -7,3 +7,7 @@ def genres(request):
 
 def popular(request):
     pass
+
+
+def publish(request):
+    pass
