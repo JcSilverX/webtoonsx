@@ -29,3 +29,6 @@
 - <https://github.com/JcSilverX>
 
 ## Contributors
+[![](https://github.com/html-react-parser/contributors.svg?width=890&button=false)](https://github.com/JcSilverX/webtoonsx/graphs/contributors)
+
+## Authors
