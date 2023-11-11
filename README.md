@@ -3,7 +3,7 @@
 	<a href="https://webtoonsx.com/">
 		<picture>
 			<source media="(prefers-color-scheme: dark)" srcset="./webtoonsx/static/assets/images/logo/wx-logo-light.png">
-			<source media="(prefers-color-scheme: light)" srcset="./webtoonsx/static/assets/images/logo/wx-logo-dark.png">
+			<img src="./webtoonsx/static/assets/images/logo/webtoonsx-logo-light.png" alt="logo" width="" height="">
 		</picture>
 	</a>
 </p>
