@@ -33,6 +33,19 @@
 
     </head>
     <body class="webtoonsx">
+        
+        {% if messages %}
+            {% for message in messages %}
+                <div class="toast-container position-fixed top-1 end-0 p-3">
+                    <div id="jsxToast" class="toast" data-jsx-notify="jsxToast" role="alert" aria-live="assertive" aria-atomic="true">
+                        <div class="toast__body">
+                            {{ message }}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        {% endif %}
+
         {% block content %} {% endblock %}
     </body>
 </html>
