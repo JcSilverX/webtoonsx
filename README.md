@@ -20,3 +20,10 @@
 <p align="center">Discover new stories or share your own.</p>
 
 ## webtoonsx
+
+## Status
+
+## Creator
+**JcSilverX**
+- <https://jcsilverx.com/>
+- <https://github.com/JcSilverX>
