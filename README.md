@@ -9,7 +9,11 @@
 </p>
 
 <p align="center">
-    <img src="./webtoonsx/static/assets/images/logo/webtoonsx-logo-light.png" alt="WebtoonsX logo" width="150" height="">
+    <img src="" alt="WebtoonsX logo" width="150" height="">
+	<picture>
+		<source media="(prefers-color-scheme: dark)" srcset="./webtoonsx/static/assets/images/logo/webtoonsx-logo-light.png">
+		<source media="(prefers-color-scheme: light)" srcset="./webtoonsx/static/assets/images/logo/webtoonsx-logo-dark.png">  
+	</picture>
 </p>
 
 <p align="center">Discover new stories or share your own.</p>
