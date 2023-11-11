@@ -22,4 +22,5 @@ urlpatterns = [
     path('', include('webtoonsx.urls')),
     path('', include("django.contrib.auth.urls")),
     path('', include('user.urls')),
+    path('', include('series.urls')),
 ]
