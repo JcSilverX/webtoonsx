@@ -1,8 +1,11 @@
 
 <p align="center">
-  <a href="https://webtoonsx.com/">
-    <img src="./webtoonsx/static/assets/images/logo/wx-logo-light.png" alt="WebtoonsX logo" width="" height="">
-  </a>
+	<a href="https://webtoonsx.com/">
+		<picture>
+			<source media="(prefers-color-scheme: dark)" srcset="./webtoonsx/static/assets/images/logo/wx-logo-light.png">
+			<source media="(prefers-color-scheme: light)" srcset="./webtoonsx/static/assets/images/logo/wx-logo-dark.png">
+		</picture>
+	</a>
 </p>
 
 <p align="center">
@@ -12,3 +15,4 @@
 <p align="center">Discover new stories or share your own.</p>
 
 ## webtoonsx
+
