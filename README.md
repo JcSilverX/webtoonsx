@@ -1,6 +1,6 @@
 
 <p align="center">
-	<a href="https://weatherappx.com/">
+	<a href="https://webtoonsx.com/">
 		<picture>
 			<source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/JcSilverX/webtoonsx/main/webtoonsx/static/assets/images/logo/wx-logo-light.png">
 			<source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/JcSilverX/webtoonsx/main/webtoonsx/static/assets/images/logo/wx-logo-dark.png">
