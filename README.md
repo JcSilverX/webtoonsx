@@ -20,8 +20,10 @@
 <p align="center">Discover new stories or share your own.</p>
 
 ## webtoonsx
+<p>Coming soon.</p>
 
 ## Status
+<p>Coming soon.</p>
 
 ## Creator
 **JcSilverX**
