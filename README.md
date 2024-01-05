@@ -17,7 +17,11 @@
 	</picture>
 </p>
 
-<p align="center">Discover new stories or share your own.</p>
+<p align="center">
+	Discover new stories or share your own.
+	<br />
+	<a href="https://www.webtoonsx.com/"><strong>Explore the app »</strong></a>
+</p>
 
 ## webtoonsx
 <p>Coming soon.</p>
